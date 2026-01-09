@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dad! - ZX Spectrum Card</title>
+    <style>
+        /* ======================================
+           ZX SPECTRUM BIRTHDAY CARD
+           Authentic 8x8 pixel blocks
+           2 colors per block (attribute clash!)
+           ====================================== */
+        
+        /* ZX Spectrum Color Palette */
+        :root {
+            --black: #000000;
+            --blue: #0000D7;
+            --red: #D70000;
+            --magenta: #D700D7;
+            --green: #00D700;
+            --cyan: #00D7D7;
+            --yellow: #D7D700;
+            --white: #D7D7D7;
+            
+            /* Bright variants */
+            --bright-black: #000000;
+            --bright-blue: #0000FF;
+            --bright-red: #FF0000;
+            --bright-magenta: #FF00FF;
+            --bright-green: #00FF00;
+            --bright-cyan: #00FFFF;
+            --bright-yellow: #FFFF00;
+            --bright-white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--cyan);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .card {
+            background: var(--black);
+            border: 8px solid var(--bright-white);
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+        }
+        
+        /* ZX Spectrum Rainbow Logo */
+        .spectrum-logo {
+            display: flex;
+            height: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .spectrum-logo div {
+            flex: 1;
+            height: 100%;
+        }
+        
+        .rainbow-red { background: var(--bright-red); }
+        .rainbow-orange { background: #FF8800; }
+        .rainbow-yellow { background: var(--bright-yellow); }
+        .rainbow-green { background: var(--bright-green); }
+        .rainbow-cyan { background: var(--bright-cyan); }
+        .rainbow-blue { background: var(--bright-blue); }
+        .rainbow-magenta { background: var(--bright-magenta); }
+        
+        /* Main message */
+        .message {
+            background: var(--blue);
+            color: var(--bright-yellow);
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 1.4;
+            /* 8x8 pixel effect */
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        
+        /* Cocktail glasses container */
+        .cocktails {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--black);
+        }
+        
+        /* Pixel art glass */
+        .glass {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .straw {
+            width: 8px;
+            height: 32px;
+            margin-left: 12px;
+        }
+        
+        .glass-body {
+            width: 40px;
+            height: 64px;
+            position: relative;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+        
+        /* Ice cubes */
+        .ice {
+            width: 8px;
+            height: 8px;
+            background: var(--bright-cyan);
+            position: absolute;
+        }
+        
+        /* Heart */
+        .heart {
+            color: var(--bright-red);
+            font-size: 16px;
+            margin-top: 8px;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Footer with flashing text */
+        .footer {
+            background: var(--magenta);
+            color: var(--bright-yellow);
+            padding: 12px;
+            text-align: center;
+            font-size: 10px;
+            margin-top: 20px;
+        }
+        
+        .flashing {
+            animation: flash 1s infinite;
+        }
+        
+        @keyframes flash {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+        
+        /* Pixel font effect */
+        .pixel-text {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- ZX Spectrum Rainbow Logo -->
+        <div class="spectrum-logo">
+            <div class="rainbow-red"></div>
+            <div class="rainbow-orange"></div>
+            <div class="rainbow-yellow"></div>
+            <div class="rainbow-green"></div>
+            <div class="rainbow-cyan"></div>
+            <div class="rainbow-blue"></div>
+            <div class="rainbow-magenta"></div>
+        </div>
+        
+        <!-- Main Birthday Message -->
+        <div class="message pixel-text">
+            HAPPY BIRTHDAY DAD<br>
+            WE BLOODY LOVE YOU<br>
+            SIMON & SARA
+        </div>
+        
+        <!-- Three Cocktail Glasses -->
+        <div class="cocktails">
+            <!-- Glass 1: Red Cocktail -->
+            <div class="glass">
+                <div class="straw" style="background: var(--bright-white);"></div>
+                <div class="glass-body" style="background: var(--bright-red);">
+                    <div class="ice" style="top: 20px; left: 8px;"></div>
+                    <div class="ice" style="top: 35px; left: 16px;"></div>
+                </div>
+                <div class="heart">♥</div>
+            </div>
+            
+            <!-- Glass 2: Green Cocktail -->
+            <div class="glass">
+                <div class="straw" style="background: var(--bright-white);"></div>
+                <div class="glass-body" style="background: var(--bright-green);">
+                    <div class="ice" style="top: 25px; left: 12px;"></div>
+                    <div class="ice" style="top: 40px; left: 20px;"></div>
+                </div>
+                <div class="heart">♥</div>
+            </div>
+            
+            <!-- Glass 3: Blue Cocktail -->
+            <div class="glass">
+                <div class="straw" style="background: var(--bright-white);"></div>
+                <div class="glass-body" style="background: var(--bright-blue);">
+                    <div class="ice" style="top: 18px; left: 10px;"></div>
+                    <div class="ice" style="top: 38px; left: 18px;"></div>
+                </div>
+                <div class="heart">♥</div>
+            </div>
+        </div>
+        
+        <!-- Footer with Address (Flashing) -->
+        <div class="footer pixel-text">
+            <div class="flashing">9th january 2026</div>
+            <div>propriété de dieu</div>
+            <div>la celle roquedur</div>
+            <div>30440 france</div>
+        </div>
+    </div>
+    
+    <!-- ZX Spectrum Beeper Sound -->
+    <script>
+        // Web Audio API for ZX Spectrum beeper
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Beep function (single channel like ZX Spectrum)
+        function beep(frequency, duration) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'square'; // ZX Spectrum used square waves
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+        
+        // Happy Birthday melody (simplified for beeper)
+        const happyBirthday = [
+            {note: 262, duration: 0.4}, // C
+            {note: 262, duration: 0.2}, // C
+            {note: 294, duration: 0.6}, // D
+            {note: 262, duration: 0.6}, // C
+            {note: 349, duration: 0.6}, // F
+            {note: 330, duration: 1.2}, // E
+            {note: 262, duration: 0.4}, // C
+            {note: 262, duration: 0.2}, // C
+            {note: 294, duration: 0.6}, // D
+            {note: 262, duration: 0.6}, // C
+            {note: 392, duration: 0.6}, // G
+            {note: 349, duration: 1.2}  // F
+        ];
+        
+        // For He's a Jolly Good Fellow (simplified)
+        const jollyGoodFellow = [
+            {note: 392, duration: 0.5}, // G
+            {note: 392, duration: 0.5}, // G
+            {note: 440, duration: 0.5}, // A
+            {note: 392, duration: 0.5}, // G
+            {note: 349, duration: 0.5}, // F
+            {note: 330, duration: 1.0}, // E
+            {note: 294, duration: 0.5}, // D
+            {note: 294, duration: 0.5}, // D
+            {note: 330, duration: 0.5}, // E
+            {note: 294, duration: 0.5}, // D
+            {note: 262, duration: 1.0}  // C
+        ];
+        
+        let currentTime = 0;
+        
+        // Play melody
+        function playMelody(melody) {
+            melody.forEach((note, index) => {
+                setTimeout(() => {
+                    beep(note.note, note.duration);
+                }, currentTime * 1000);
+                currentTime += note.duration + 0.05; // Small gap between notes
+            });
+        }
+        
+        // Auto-play on load (with user interaction requirement)
+        document.addEventListener('click', function playOnce() {
+            currentTime = 0;
+            playMelody(happyBirthday);
+            
+            setTimeout(() => {
+                currentTime = 0;
+                playMelody(jollyGoodFellow);
+            }, 8000); // Play second song after first
+            
+            document.removeEventListener('click', playOnce);
+        }, {once: true});
+        
+        // Show click prompt
+        setTimeout(() => {
+            if (audioContext.state === 'suspended') {
+                alert('🎵 Click anywhere to hear the ZX Spectrum beeper music! 🎵');
+            }
+        }, 500);
+    </script>
+</body>
+</html>
