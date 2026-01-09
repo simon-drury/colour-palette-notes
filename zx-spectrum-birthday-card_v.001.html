@@ -56,7 +56,7 @@
             width: 100%;
             padding: 20px;
             position: relative;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.5);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.125);
         }
         
         /* ZX Spectrum Rainbow Logo */
@@ -283,17 +283,37 @@
         
         // For He's a Jolly Good Fellow (simplified)
         const jollyGoodFellow = [
-            {note: 392, duration: 0.5}, // G
-            {note: 392, duration: 0.5}, // G
-            {note: 440, duration: 0.5}, // A
-            {note: 392, duration: 0.5}, // G
-            {note: 349, duration: 0.5}, // F
+            {note: 392, }, // G
+            {note: 392, }, // G
+            {note: 440, }, // A
+            {note: 392, }, // G
+            {note: 349, }, // F
             {note: 330, duration: 1.0}, // E
-            {note: 294, duration: 0.5}, // D
-            {note: 294, duration: 0.5}, // D
-            {note: 330, duration: 0.5}, // E
-            {note: 294, duration: 0.5}, // D
+            {note: 294, }, // D
+            {note: 294, }, // D
+            {note: 330, }, // E
+            {note: 294, }, // D
             {note: 262, duration: 1.0}  // C
+
+        // All You Need Is Love (The Beatles - simplified for beeper)
+const allYouNeedIsLove = [
+    {note: 392, duration: 0.125}, // G - "All"
+    {note: 440, duration: 0.125}, // A - "you" 
+    {note: 494, duration: 0.125}, // B - "need"
+    {note: 440, duration: 0.125}, // A - "is"
+    {note: 392, duration: 0.25},  // G - "love"
+    {note: 392, duration: 0.125}, // G - "All"
+    {note: 440, duration: 0.125}, // A - "you"
+    {note: 494, duration: 0.125}, // B - "need"
+    {note: 440, duration: 0.125}, // A - "is"
+    {note: 392, duration: 0.25},  // G - "love"
+    {note: 392, duration: 0.125}, // G - "All"
+    {note: 440, duration: 0.125}, // A - "you"
+    {note: 494, duration: 0.125}, // B - "need"
+    {note: 440, duration: 0.125}, // A - "is"
+    {note: 392, duration: 0.25}   // G - "love"
+];e: 262, duration: 1.0}  // C
+];        
         ];
         
         let currentTime = 0;
@@ -308,25 +328,20 @@
             });
         }
         
-        // Auto-play on load (with user interaction requirement)
-        document.addEventListener('click', function playOnce() {
-            currentTime = 0;
-            playMelody(happyBirthday);
-            
-            setTimeout(() => {
-                currentTime = 0;
-                playMelody(jollyGoodFellow);
-            }, 8000); // Play second song after first
-            
-            document.removeEventListener('click', playOnce);
-        }, {once: true});
-        
-        // Show click prompt
-        setTimeout(() => {
-            if (audioContext.state === 'suspended') {
-                alert('🎵 Click anywhere to hear the ZX Spectrum beeper music! 🎵');
-            }
-        }, 500);
+            // Track click count for sequential songs
+    let clickCount = 0;
+    const melodies = [happyBirthday, jollyGoodFellow, allYouNeedIsLove]; // Three sequential songs    // Sequential click handler for music
+    document.addEventListener('click', function() {
+        currentTime = 0;
+        playMelody(melodies[clickCount % melodies.length]); // Loop through songs
+        clickCount++;    });
+    
+    // Show click prompt
+    setTimeout(() => {
+        if (audioContext.state === 'suspended') {
+            alert('🎵 Click anywhere to hear the ZX Spectrum beeper music! 🎵');
+        }
+    }, 500);
     </script>
 </body>
 </html>
