@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFL Design Demo - Purple to Green Gradient Backlight</title>
+    
+    <style>
+        /* ==================================================
+           AI BEGINNER'S GRAPHIC DESIGN LESSON
+           Systemic Functional Linguistics (SFL) Design
+           Concept: Plastic Template with Moving Backlight
+           ================================================== */
+        
+        /* COLOR PALETTE from our GitHub repository
+           ========================================= */
+        :root {
+            /* Dark Purple Palette - for "given" information (top/left/ideal) */
+            --purple-deep: #220439;      /* Darkest purple */
+            --purple-dark: #391356;      /* Dark purple */
+            --purple-primary: #532B72;   /* Primary purple */
+            --purple-medium: #724C8F;    /* Medium purple */
+            --purple-light: #9476AB;     /* Light purple */
+            
+            /* Dark Teal-Green Palette - for "new" information (bottom/right/real) */
+            --green-deep: #003A23;       /* Darkest green */
+            --green-dark: #0E573A;       /* Dark green */
+            --green-primary: #277455;    /* Primary green */
+            --green-medium: #489173;     /* Medium green */
+            --green-light: #74AE96;      /* Light green */
+            
+            /* Light Magenta for text - not too bright, subtle */
+            --magenta-text: #9476AB;     /* Using light purple for now */
+            --magenta-bright: #B89FCC;   /* Slightly brighter for headings */
+        }
+        
+        /* RESET AND BASIC SETUP
+           ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Makes sizing easier to understand */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a; /* Very dark background so gradients pop */
+            color: var(--magenta-text); /* Light magenta text */
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* THE MAGIC: MOVING GRADIENT BACKLIGHT
+           ====================================
+           Think of this as the backlight behind a plastic template.
+           The gradient moves VERY SLOWLY from purple (top) to green (bottom).
+           
+           SFL Principles:
+           - Purple (top) = GIVEN/IDEAL (established, aspirational)
+           - Green (bottom) = NEW/REAL (emerging, concrete)
+        */
+        
+        @keyframes slowGradientMove {
+            /* Animation moves the gradient position VERY slowly */
+            0% {
+                background-position: 0% 0%;   /* Start position */
+            }
+            50% {
+                background-position: 100% 100%; /* Halfway through */
+            }
+            100% {
+                background-position: 0% 0%;   /* Back to start (loops) */
+            }
+        }
+        
+        /* CONTAINER - The main content box
+           ================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Needed for backlight positioning */
+        }
+        
+        /* HERO SECTION with gradient backlight border
+           =========================================== */
+        .hero {
+            /* The element itself */
+            position: relative;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            
+            /* BACKLIGHT EFFECT: Create a pseudo-element behind the border */
+            /* This is the "plastic template" concept */
+        }
+        
+        .hero::before {
+            /* This creates the glowing gradient backlight */
+            content: ''; /* Empty content creates a layer */
+            position: absolute;
+            top: -3px;    /* Slightly outside the element */
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            z-index: -1;  /* Behind the main content */
+            
+            /* THE GRADIENT: Purple to Green (top to bottom) */
+            background: linear-gradient(
+                135deg,  /* Diagonal angle for interest */
+                var(--purple-deep) 0%,
+                var(--purple-dark) 20%,
+                var(--purple-primary) 40%,
+                var(--green-primary) 60%,
+                var(--green-dark) 80%,
+                var(--green-deep) 100%
+            );
+            
+            /* Make the gradient HUGE so it can move */
+            background-size: 400% 400%;
+            
+            /* VERY SLOW animation - 60 seconds for one cycle */
+            animation: slowGradientMove 60s ease infinite;
+            
+            /* Slight blur for "glow" effect */
+            filter: blur(8px);
+            
+            /* Rounded corners */
+            border-radius: 12px;
+            
+            /* Glossy effect - semi-transparent overlay */
+            opacity: 0.6;
+        }
+        
+        /* The actual border on top of the backlight */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid rgba(148, 118, 171, 0.3); /* Semi-transparent purple */
+            border-radius: 12px;
+            pointer-events: none; /* Don't block clicks */
+        }
+        
+        /* TEXT STYLING
+           ============ */
+        h1 {
+            color: var(--magenta-bright); /* Brighter magenta for headings */
+            font-size: 3em;
+            margin-bottom: 20px;
+            
+            /* Subtle text glow/shine effect */
+            text-shadow: 0 0 20px rgba(148, 118, 171, 0.5);
+            
+            /* Slight gradient on text itself */
+            background: linear-gradient(
+                to bottom,
+                #B89FCC,  /* Light at top */
+                #9476AB   /* Darker at bottom */
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: var(--magenta-text);
+            margin-bottom: 15px;
+        }
+        
+        /* GRID LAYOUT with gradient backlight
+           =================================== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* CARD with backlight border */
+        .card {
+            position: relative;
+            padding: 30px;
+            background: rgba(10, 10, 10, 0.8); /* Semi-transparent dark bg */
+            border-radius: 8px;
+        }
+        
+        /* Card backlight (same technique as hero) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            
+            /* Same purple-to-green gradient */
+            background: linear-gradient(
+                180deg,  /* Straight down - emphasizes top-to-bottom */
+                var(--purple-primary),
+                var(--green-primary)
+            );
+            
+            background-size: 200% 200%;
+            animation: slowGradientMove 60s ease infinite;
+            filter: blur(4px);
+            border-radius: 8px;
+            opacity: 0.5;
+        }
+        
+        .card h2 {
+            color: var(--magenta-bright);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        /* CUSTOM ICON STYLING (monochrome with gradient)
+           =============================================== */
+        .icon {
+            font-size: 3em;
+            display: inline-block;
+            margin-bottom: 15px;
+            
+            /* Apply purple-to-green gradient to icon */
+            background: linear-gradient(
+                to bottom,
+                var(--purple-light),
+                var(--green-light)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            
+            /* Subtle glow */
+            filter: drop-shadow(0 0 10px rgba(116, 174, 150, 0.3));
+        }
+        
+        /* FOOTER NOTE
+           =========== */
+        .footer-note {
+            margin-top: 60px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: rgba(148, 118, 171, 0.6);
+            border-top: 1px solid rgba(148, 118, 171, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================================================
+         MAIN CONTENT
+         This is the "plastic template" that sits on top
+         of the moving gradient backlight
+         ================================================== -->
+    
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>Systemic Functional Linguistics Design</h1>
+            <p>This page demonstrates the concept of a <strong>plastic template with moving backlight</strong>.</p>
+            <p>The gradient moves slowly from <strong>purple (given/ideal)</strong> at the top to <strong>green (new/real)</strong> at the bottom, creating a sophisticated, subtle animation effect.</p>
+        </section>
+        
+        <!-- GRID OF CARDS -->
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🚀</div>
+                <h2>Purple = Given</h2>
+                <p>Purple represents established, known information. It's the starting point, the ideal, the aspirational.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon">🌱</div>
+                <h2>Green = New</h2>
+                <p>Green represents emerging, new information. It's the destination, the real, the concrete.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon">✨</div>
+                <h2>Slow Movement</h2>
+                <p>The gradient moves very slowly (60 seconds per cycle) to create a subtle, sophisticated effect - not flashy or garish.</p>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <p><strong>Technical Note:</strong> This design uses CSS gradients with blur filters to create a "backlight" effect. The borders, icons, and grids all share the same purple-to-green gradient animation, creating visual cohesion.</p>
+            <p><strong>Beginner Tip:</strong> Look at the CSS comments above to understand how each part works! The key is the <code>::before</code> pseudo-element with an animated gradient.</p>
+        </div>
+    </div>
+</body>
+</html>
