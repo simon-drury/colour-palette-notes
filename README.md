@@ -117,3 +117,63 @@ module.exports = {
 ```
 
 **Source:** [Paletton](https://paletton.com/#uid=14C0u0kllllaFw0g0qFqFg0w0aF)
+
+---
+
+## Purple-Magenta Palette
+
+A monochromatic purple-magenta colour scheme.
+
+### Colours
+
+| Preview | Name | Hex | RGB | Usage |
+|---------|------|-----|-----|-------|
+| ![#3A1B3F](https://via.placeholder.com/50x30/3A1B3F/3A1B3F.png) | Dark Purple | `#3A1B3F` | `rgb(58, 27, 63)` | Deep backgrounds, footer |
+| ![#512257](https://via.placeholder.com/50x30/512257/512257.png) | Deep Purple | `#512257` | `rgb(81, 34, 87)` | Text, accents |
+| ![#672770](https://via.placeholder.com/50x30/672770/672770.png) | Primary Purple | `#672770` | `rgb(103, 39, 112)` | Primary buttons, headings |
+| ![#7C2988](https://via.placeholder.com/50x30/7C2988/7C2988.png) | Medium Magenta | `#7C2988` | `rgb(124, 41, 136)` | Secondary elements, borders |
+| ![#922AA0](https://via.placeholder.com/50x30/922AA0/922AA0.png) | Light Magenta | `#922AA0` | `rgb(146, 42, 160)` | Backgrounds, hover states |
+
+### CSS Variables
+
+```css
+:root {
+  --color-dark: #3A1B3F;
+  --color-deep: #512257;
+  --color-primary: #672770;
+  --color-medium: #7C2988;
+  --color-light: #922AA0;
+}
+```
+
+### SCSS Variables
+
+```scss
+$color-dark: #3A1B3F;
+$color-deep: #512257;
+$color-primary: #672770;
+$color-medium: #7C2988;
+$color-light: #922AA0;
+```
+
+### Tailwind Configuration
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'brand-dark': '#3A1B3F',
+        'brand-deep': '#512257',
+        'brand-primary': '#672770',
+        'brand-medium': '#7C2988',
+        'brand-light': '#922AA0',
+      }
+    }
+  }
+}
+```
+
+**Source:** [Paletton](https://paletton.com/#uid=14S0u0klllliCc0jZgFmHq0o3uF)
+
+**Source:** [Paletton](https://paletton.com/#uid=14C0u0kllllaFw0g0qFqFg0w0aF)
